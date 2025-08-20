@@ -1,0 +1,206 @@
+/* === Blue Noir — itsuga-like flow === */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600;700;800&display=swap');
+
+:root{
+  --bg1:#0b1220; --bg2:#0f1b33; --ink:#eaf0ff; --muted:#9aa4c0;
+  --primary:#4aa8ff;
+  --card:rgba(255,255,255,.10); --card-border:rgba(200,210,255,.18);
+  --radius:22px; --shadow:0 14px 40px rgba(0,0,0,.35); --blur:blur(14px);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  background:var(--bg1);color:var(--ink);line-height:1.65;overflow-x:hidden
+}
+body::before{
+  content:"";position:fixed;inset:-20% -20%;z-index:-1;
+  background:
+    radial-gradient(60% 60% at 20% 10%, rgba(83,166,255,.20), transparent 60%),
+    radial-gradient(60% 60% at 90% 20%, rgba(88,76,255,.18), transparent 65%),
+    radial-gradient(60% 60% at 10% 90%, rgba(0,245,255,.12), transparent 60%),
+    radial-gradient(60% 60% at 85% 80%, rgba(136,43,255,.16), transparent 65%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  filter:saturate(1.1) contrast(1.05);
+  animation:bg 18s ease-in-out infinite alternate;
+}
+@keyframes bg{0%{transform:translateY(0)}50%{transform:translateY(-1rem)}100%{transform:translateY(0)}}
+
+.container{max-width:1040px;margin:0 auto;padding:clamp(16px,2.4vw,24px)}
+.section{padding:clamp(48px,7vw,72px) 24px}
+.center{text-align:center}
+
+.card{
+  background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--card-border);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;overflow:hidden
+}
+.card *{word-break:break-word;overflow-wrap:anywhere}
+
+.cards{display:grid;gap:16px}
+@media(min-width:768px){.cards{grid-template-columns:repeat(2,1fr)}}
+.cards.two{display:grid;gap:16px}
+@media(min-width:768px){.cards.two{grid-template-columns:repeat(2,1fr)}}
+
+.tiny{font-size:12px}
+.mt-6{margin-top:6px}.mt-10{margin-top:10px}.mt-12{margin-top:12px}.mt-18{margin-top:18px}
+.title{font-size:clamp(22px,3.4vw,34px);font-weight:800;margin:0 0 14px;color:#fff}
+.muted{color:var(--muted)}
+
+.nav{
+  position:sticky;top:0;z-index:40;display:flex;gap:12px;justify-content:center;
+  background:rgba(8,12,24,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(156,188,255,.2);
+  padding:10px 12px
+}
+.nav a{color:#cfe4ff;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px}
+.nav a:hover{background:rgba(178,205,255,.08)}
+
+.hero{min-height:92dvh;display:grid;place-items:center;text-align:center;padding:56px 24px;position:relative;overflow:hidden}
+.names{font-family:'Great Vibes',cursive;font-size:clamp(56px,10vw,96px);font-weight:400;color:#d3e7ff;text-shadow:0 10px 36px rgba(12,22,55,.5)}
+.names em{color:#79c0ff;font-style:normal}
+.subtitle{color:#c8d6ff}
+.date-pill{display:inline-block;background:rgba(255,255,255,.08);border:1px solid var(--card-border);border-radius:999px;padding:8px 14px;color:#c7d7ff}
+
+/* Map */
+.map-grid{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:900px){.map-grid{grid-template-columns:1.1fr 1.9fr}}
+.map-info{padding:10px}
+.map-box{border-radius:18px;overflow:hidden;border:1px solid var(--card-border);box-shadow:var(--shadow)}
+.map{display:block;width:100%;aspect-ratio:16/9;border:0}
+
+/* Countdown */
+.countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.countdown.big .cd-num{font-size:42px}
+.cd-box{background:linear-gradient(180deg,rgba(178,205,255,.18),rgba(255,255,255,.08));border:1px solid rgba(156,188,255,.24);backdrop-filter:var(--blur);border-radius:16px;padding:14px 16px;min-width:92px}
+.cd-num{font-size:28px;font-weight:800;color:#fff}
+.cd-label{font-size:11px;color:#a6b5e6;letter-spacing:.9px;text-transform:uppercase}
+
+/* Buttons & Inputs */
+.btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#66b7ff,#3797ff);color:#fff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:14px;border:0;cursor:pointer;box-shadow:0 18px 46px rgba(55,151,255,.35)}
+.btn:hover{filter:brightness(1.05)}
+.ghost{background:transparent;color:#cfe4ff;border:1px solid rgba(156,188,255,.28)}
+
+.input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(156,188,255,.24);border-radius:12px;padding:10px 12px;color:#fff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+
+.copybox{display:flex;gap:10px}
+.copybox input{flex:1}
+.copybox button{white-space:nowrap}
+
+/* Footer */
+.footer{padding:52px 24px;text-align:center;color:#aab8e8}
+
+/* Lightbox */
+.lightbox{border:0;background:transparent;padding:0}
+.lightbox::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(2px)}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:14px;box-shadow:var(--shadow)}
+
+/* Music FAB */
+.music{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:12px;background:rgba(9,15,30,.6);border:1px solid rgba(156,188,255,.25);backdrop-filter:blur(10px);border-radius:999px;padding:10px 14px}
+.music button{border:0;background:linear-gradient(180deg,#66b7ff,#3797ff);color:#fff;border-radius:50%;width:46px;height:46px;display:grid;place-items:center}
+.music input[type='range']{accent-color:#66b7ff;width:140px}
+.hide{display:none!important}
+
+/* Gate */
+.gate{position:fixed;inset:0;display:grid;place-items:center;background:rgba(8,12,24,.7);backdrop-filter:blur(10px);z-index:100}
+.gate-card{width:min(520px,92vw);text-align:center;border-radius:22px;border:1px solid rgba(156,188,255,.28);background:linear-gradient(180deg, rgba(178,205,255,.12), rgba(255,255,255,.06));box-shadow:var(--shadow);padding:26px 20px}
+.gate-top{color:#c7d7ff;margin-bottom:6px}
+.gate-names{font-family:'Great Vibes',cursive;color:#d3e7ff;font-size:48px}
+.gate-names span{color:#79c0ff}
+.gate-to{margin-top:10px;color:#cfe4ff}
+.gate-loc{color:#cfe4ff;margin-bottom:6px}
+
+/* Blobs */
+.blob{position:absolute;filter:blur(60px);opacity:.5}
+.blob.a{inset:auto auto 10% -10%;width:380px;height:380px;background:#5aa8ff3a;border-radius:50%}
+.blob.b{inset:-10% -10% auto auto;width:420px;height:420px;background:#8b5aff38;border-radius:50%}
+
+/* Events polish */
+.events{display:grid;gap:18px}
+@media(min-width:900px){.events{grid-template-columns:1fr 1fr}}
+.event{position:relative;padding:22px;border-left:6px solid transparent;background:linear-gradient(90deg, rgba(100,170,255,.35), rgba(100,170,255,0)) padding-box,var(--card);border-radius:var(--radius)}
+.event .event-date{margin:.2em 0 10px;font-weight:800;color:#fff;letter-spacing:.2px}
+.meta{list-style:none;padding:0;margin:0 0 12px;display:grid;gap:8px}
+.meta-item{display:flex;align-items:center;gap:10px;color:#cfe0ff}
+.meta-item svg{color:#80b9ff;flex:0 0 auto}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.actions .btn{padding:10px 14px}
+
+/* RSVP & Guestbook & Gift */
+.invite-text{font-size:18px;color:#cfe4ff;margin-bottom:16px}
+.btn-gold-lg,.btn-gold,.btn-gold-xl{background:#bfa15c;color:#fff;border:0;border-radius:14px;cursor:pointer;font-weight:700;box-shadow:0 8px 26px rgba(191,161,92,.28);transition:transform .2s,filter .2s}
+.btn-gold-lg{padding:12px 20px;display:inline-flex}
+.btn-gold{padding:10px 14px}
+.btn-gold-xl{padding:14px 24px;width:100%}
+.btn-gold-lg:hover,.btn-gold:hover,.btn-gold-xl:hover{filter:brightness(1.06);transform:translateY(-1px)}
+
+.rsvp-card form{max-width:760px;margin:0 auto}
+.rsvp-card label{display:block;color:#cfe4ff;font-weight:600;margin-bottom:6px}
+.rsvp-card .input{width:100%}
+.whats{display:grid;grid-template-columns:120px 1fr;gap:10px}
+.whats .code{text-align:center}
+
+.guest-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px}
+.guest-item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(156,188,255,.16);border-radius:14px;padding:12px}
+.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#3a4b7e,#253259);color:#fff;font-weight:800}
+.guest-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badge{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#0b1220;background:#bfa15c;border-radius:999px;padding:4px 8px}
+.guest-name{font-weight:800;color:#fff}
+.guest-group{color:#9bb0e8}
+.guest-msg{color:#dbe6ff;margin-top:4px;white-space:pre-wrap}
+
+/* gift */
+.gift-box{display:grid;gap:10px;margin-top:14px}
+.gift-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid rgba(156,188,255,.16);border-radius:14px;background:rgba(255,255,255,.06)}
+.bank-tag{font-weight:800;color:#0b1220;background:#d7c283;border-radius:10px;padding:6px 10px}
+.acc{color:#fff;letter-spacing:1px}
+.ship{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.ship .addr{flex:1;border:1px solid rgba(156,188,255,.16);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.06);color:#eaf0ff}
+
+/* =======================
+   FOTO MEMPELAI — CENTER & TIDAK TERPOTONG
+   ======================= */
+.card.profile.banner .profile-banner{
+  position: relative;
+  aspect-ratio: 3 / 4;     /* bingkai proporsional */
+  height: auto;
+  max-height: 520px;
+  display: flex;
+  align-items: center;      /* center vertikal */
+  justify-content: center;  /* center horizontal */
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+}
+.card.profile.banner .profile-banner img{
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;     /* <<< tidak ter-crop */
+  object-position: 50% 50% !important;/* benar-benar di tengah */
+}
+@supports not (aspect-ratio: 1){
+  .card.profile.banner .profile-banner{ height: 480px; }
+}
+
+/* =======================
+   GALERI — CENTER RAPIH (boleh crop rapi)
+   ======================= */
+#galeri .gallery{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 14px !important;
+}
+#galeri .gallery img{
+  display: block !important;
+  width: 100% !important;
+  height: 260px !important;
+  object-fit: cover !important;
+  object-position: 50% 50% !important;
+  border-radius: 12px;
+}
+
+/* LIGHTBOX CENTER */
+.lightbox{ display: grid; place-items: center; padding: 0; }
+.lightbox img{ max-width: 90vw; max-height: 85vh; object-fit: contain; }

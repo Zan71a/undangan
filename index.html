@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lily & Zildan — Undangan Ulangtahun</title>
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- MUSIC -->
+  <audio id="bgm" loop preload="auto">
+    <source src="lagu.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- OPEN INVITATION (Kepada Yth) -->
+  <!-- ID diganti ke 'cover' agar cocok dengan script.js -->
+  <div id="cover" class="gate">
+    <div class="gate-card">
+      <div class="gate-top">The Wedding of</div>
+      <div class="gate-names">Lily <span>&</span> Zildan</div>
+      <div class="gate-to">Kepada Yth.</div>
+      <div id="guestName" class="gate-guest">Bapak/Ibu/Saudara/i</div>
+      <div class="gate-loc">di Tempat</div>
+      <button id="openInvite" class="btn btn-primary" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" stroke="white" stroke-width="1.7"/></svg>
+        Open Invitation
+      </button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="stack">
+      <p class="date-pill">Sabtu • 13 September 2025</p>
+      <h1 class="names">Lily <em>&</em> Zildan</h1>
+      <p class="subtitle">Dengan penuh sukacita, kami mengundang Anda hadir pada hari istimewa kami</p>
+      <div id="countdown" class="countdown"></div>
+      <a href="#acara" class="btn ghost mt-18">Lihat detail acara</a>
+    </div>
+    <div class="blob a" aria-hidden="true"></div>
+    <div class="blob b" aria-hidden="true"></div>
+  </header>
+
+  <!-- AYAT / QUOTE -->
+  <section class="section">
+    <div class="container">
+      <article class="card center">
+        <div class="ayat">وَمِنْ كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ</div>
+        <p class="muted">“Dan segala sesuatu Kami ciptakan berpasang-pasangan agar kamu mengingat (kebesaran Allah).” <br><strong>(QS. Az-Zariyat: 49)</strong></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- MEMPELAI (full-width banner image) -->
+  <section id="bridegroom" class="section">
+    <div class="container">
+      <div class="cards two">
+        <!-- Bride -->
+        <article class="card profile banner">
+          <div class="profile-banner">
+            <img src="img/bride.jpg" alt="Foto Lily" />
+            <div class="profile-overlay">
+              <div class="role">THE BRIDE</div>
+              <div class="overlay-name">Lily</div>
+            </div>
+          </div>
+          <div class="profile-body">
+            <p class="muted tiny mt-6">Putri dari Bapak — &amp; Ibu —</p>
+          </div>
+        </article>
+
+        <!-- Groom -->
+        <article class="card profile banner">
+          <div class="profile-banner">
+            <img src="img/groom.jpg" alt="Foto Zildan" />
+            <div class="profile-overlay">
+              <div class="role">THE GROOM</div>
+              <div class="overlay-name">Zildan</div>
+            </div>
+          </div>
+          <div class="profile-body">
+            <p class="muted tiny mt-6">Putra dari Bapak — &amp; Ibu —</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACARA -->
+  <section id="acara" class="section">
+    <div class="container">
+      <div class="events">
+        <!-- AKAD -->
+        <article class="card event">
+          <span class="chip">Persiapan Acara</span>
+          <h3 class="event-date">Sabtu, 13 September 2025</h3>
+
+          <ul class="meta">
+            <li class="meta-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" fill="none"/>
+              </svg>
+              Pukul 13.00 – 14.00 WIB
+            </li>
+            <li class="meta-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" fill="none"/>
+                <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7" fill="none"/>
+              </svg>
+              Bale Kinasih, Jl. Raya Sukaraja No.17, Sukaraja, Bogor
+            </li>
+          </ul>
+
+          <div class="actions">
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Bale+Kinasih" target="_blank" rel="noopener">
+              Lihat Lokasi
+            </a>
+            <!-- 08:00–10:00 WIB (+07) = 01:00–03:00 UTC -->
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://www.google.com/calendar/render?action=TEMPLATE&text=Akad%20Nikah%20Galuh%20%26%20iZian&dates=20250913T010000Z/20250913T030000Z&details=Akad%20Nikah%20Galuh%20%26%20iZian&location=Bale%20Kinasih%2C%20Jl.%20Raya%20Sukaraja%20No.17%2C%20Sukaraja%2C%20Bogor">
+              Simpan ke Kalender
+            </a>
+          </div>
+        </article>
+
+        <!-- RESEPSI -->
+        <article class="card event">
+          <span class="chip">Acara</span>
+          <h3 class="event-date">Sabtu, 13 September 2025</h3>
+
+          <ul class="meta">
+            <li class="meta-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" fill="none"/>
+              </svg>
+              Pukul 14.00 – 19.00 WIB
+            </li>
+            <li class="meta-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" fill="none"/>
+                <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7" fill="none"/>
+              </svg>
+              Bale Kinasih, Jl. Raya Sukaraja No.17, Sukaraja, Bogor
+            </li>
+          </ul>
+
+          <div class="actions">
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Bale+Kinasih" target="_blank" rel="noopener">
+              Lihat Lokasi
+            </a>
+            <!-- 11:00–14:00 WIB (+07) = 04:00–07:00 UTC -->
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://www.google.com/calendar/render?action=TEMPLATE&text=Resepsi%20Galuh%20%26%20iZian&dates=20250913T040000Z/20250913T070000Z&details=Resepsi%20pernikahan&location=Bale%20Kinasih%2C%20Jl.%20Raya%20Sukaraja%20No.17%2C%20Sukaraja%2C%20Bogor">
+              Simpan ke Kalender
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAKTU ACARA / COUNTDOWN BESAR -->
+  <section class="section">
+    <div class="container">
+      <article class="card center">
+        <h3 class="card-title">Waktu Acara</h3>
+        <div id="countdown2" class="countdown big"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- LOKASI -->
+  <section id="lokasi" class="section">
+    <div class="container">
+      <article class="card">
+        <div class="map-grid">
+          <div class="map-info">
+            <h3>Lokasi Acara</h3>
+            <p class="muted mt-0">Gunakan peta untuk navigasi menuju lokasi.</p>
+            <a class="btn btn-primary mt-10"
+               href="https://www.google.com/maps/search/?api=1&query=Bale+Kinasih"
+               target="_blank" rel="noopener">Buka Google Maps</a>
+            <p class="muted tiny mt-12">Alamat: Bale Kinasih, Jl. Raya Sukaraja No.17, Sukaraja, Bogor</p>
+          </div>
+          <div class="map-box">
+            <iframe class="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.153365559107!2d106.9242795554199!3d-6.8860109999999946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6849567ede6d05%3A0x4bca363571345543!2sBale%20Kinasih!5e0!3m2!1sid!2sid!4v1755610803294!5m2!1sid!2sid"
+              style="border:0" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi - Bale Kinasih"></iframe>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section id="galeri" class="section">
+    <div class="container">
+      <h2 class="title">Our Memories</h2>
+      <div class="gallery">
+        <img src="img/prewed1.jpg"  alt="Prewedding 1"  loading="lazy">
+        <img src="img/prewed2.jpg"  alt="Prewedding 2"  loading="lazy">
+        <img src="img/prewed3.jpg"  alt="Prewedding 3"  loading="lazy">
+        <img src="img/prewed4.jpg"  alt="Prewedding 4"  loading="lazy">
+        <img src="img/prewed5.jpg"  alt="Prewedding 5"  loading="lazy">
+        <img src="img/prewed6.jpg"  alt="Prewedding 6"  loading="lazy">
+        <img src="img/prewed7.jpg"  alt="Prewedding 7"  loading="lazy">
+        <img src="img/prewed8.jpg"  alt="Prewedding 8"  loading="lazy">
+        <img src="img/prewed9.jpg"  alt="Prewedding 9"  loading="lazy">
+        <img src="img/prewed10.jpg" alt="Prewedding 10" loading="lazy">
+        <img src="img/prewed11.jpg" alt="Prewedding 11" loading="lazy">
+        <img src="img/prewed12.jpg" alt="Prewedding 12" loading="lazy">
+        <img src="img/prewed13.jpg" alt="Prewedding 13" loading="lazy">
+        <img src="img/prewed14.jpg" alt="Prewedding 14" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP + Guestbook + Hadiah -->
+  <section id="rsvp" class="section">
+    <div class="container">
+
+      <div class="center">
+        <p class="invite-text">Kirim ucapan untuk mempelai<br/>dan konfirmasi kehadiran</p>
+        <a href="#rsvpForm" class="btn-gold-lg">Kirim Ucapan RSVP</a>
+      </div>
+
+      <!-- FORM RSVP -->
+      <article class="card rsvp-card mt-18" id="rsvpForm">
+        <h2 class="title center">RSVP</h2>
+
+        <form id="formRSVP" autocomplete="on">
+          <label>Nama
+            <input class="input" name="nama" placeholder="Nama" required>
+          </label>
+
+          <label class="mt-12">Grup
+            <input class="input" name="grup" placeholder="Keluarga / Teman / Rekan kerja">
+          </label>
+
+          <div class="row">
+            <label>No WhatsApp
+              <div class="whats">
+                <select class="input code" name="kode">
+                  <option value="+62">+62</option>
+                </select>
+                <input class="input phone" name="wa" placeholder="No WhatsApp">
+              </div>
+            </label>
+
+            <label>Kehadiran
+              <select class="input" name="status" required>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option value="Belum Pasti">Belum Pasti</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="mt-12">Komentar atau Ucapan
+            <textarea class="input" name="pesan" placeholder="Tulis komentar atau ucapan" rows="4"></textarea>
+          </label>
+
+          <button class="btn-gold-xl mt-18" type="submit">Kirim</button>
+        </form>
+      </article>
+
+      <!-- GUESTBOOK -->
+      <article class="card guest-card mt-18">
+        <h3 class="title" style="margin-bottom:6px">Ucapan & Konfirmasi</h3>
+        <p class="muted tiny mt-0">Ucapan terbaru tampil di atas.</p>
+        <ul id="guestList" class="guest-list"></ul>
+        <div id="emptyGuest" class="muted center mt-12 tiny">Belum ada ucapan. Jadilah yang pertama! ✨</div>
+      </article>
+
+      <!-- HADIAH -->
+      <article id="hadiah" class="card gift-card mt-18">
+        <div class="center">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 9h18v11H3V9Zm0 0h18M7 9V6a2 2 0 0 1 4 0v3m2 0V6a2 2 0 1 1 4 0v3" stroke="#c7b06a" stroke-width="1.6"/>
+          </svg>
+          <p class="muted mt-10">Terima kasih telah menambah kebahagiaan kami<br/>dengan doa dan hadiah indah Anda.</p>
+        </div>
+
+        <div class="gift-box">
+          <div class="gift-row">
+            <div class="bank-tag">SeaBank</div>
+            <div class="acc">9010 1300 2204</div>
+            <button class="btn-gold copy-btn" data-copy="901013002204">Salin Rekening</button>
+          </div>
+          <div class="gift-row">
+            <div class="bank-tag">Dana</div>
+            <div class="acc">0899 6366 114</div>
+            <button class="btn-gold copy-btn" data-copy="08996366114">Salin Rekening</button>
+          </div>
+        </div>
+
+        <h4 class="title center" style="margin-top:18px">Kirim Hadiah</h4>
+        <p class="muted center mt-0">Anda juga dapat mengirim kado ke alamat berikut:</p>
+        <div class="ship">
+          <div class="addr" id="addrText">
+            kp Cioray RT/01 RW/01
+          </div>
+          <button class="btn-gold copy-btn" data-copy="kp Cioray RT/01 RW/01">
+            Salin Alamat
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <dialog id="lightbox" class="lightbox"><img src="" alt="Foto prewedding"></dialog>
+
+  <!-- MUSIC FAB -->
+  <div class="music" id="musicFab" aria-live="polite">
+    <button id="toggleMusic" aria-label="Toggle music">
+      <svg id="iconPlay" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <svg id="iconPause" class="hide" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 5h4v14H7V5Zm6 0h4v14h-4V5Z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/></svg>
+    </button>
+    <input id="vol" type="range" min="0" max="1" step="0.01" value="0.7">
+  </div>
+
+  
+  <script>
+    (function(){
+      const K = {
+        BRIDE_IMG:'WED_BRIDE_IMG', GROOM_IMG:'WED_GROOM_IMG',
+        BRIDE_NAME:'WED_BRIDE_NAME', GROOM_NAME:'WED_GROOM_NAME',
+        BRIDE_PARENTS:'WED_BRIDE_PARENTS', GROOM_PARENTS:'WED_GROOM_PARENTS',
+        GALLERY:'weddingGallery', BG:'WED_BG_IMG'
+      };
+      const $ = (s)=>document.querySelector(s);
+      const $$ = (s)=>Array.from(document.querySelectorAll(s));
+      // Names
+      const bName = localStorage.getItem(K.BRIDE_NAME)||'';
+      const gName = localStorage.getItem(K.GROOM_NAME)||'';
+      if (bName || gName){
+        const heroNames = $('.names'); if(heroNames) heroNames.innerHTML = (bName||'Galuh') + ' <em>&</em> ' + (gName||'iZian');
+        $$('.overlay-name').forEach((el,i)=>{ el.textContent = i===0 ? (bName||'Galuh') : (gName||'iZian'); });
+      }
+      // Parents
+      const paras = $$('.profile.banner .profile-body .muted');
+      const bp = localStorage.getItem(K.BRIDE_PARENTS);
+      const gp = localStorage.getItem(K.GROOM_PARENTS);
+      if(paras.length>=2){ if(bp) paras[0].textContent='Putri dari '+bp; if(gp) paras[1].textContent='Putra dari '+gp; }
+      // Photos
+      const imgs = $$('.profile.banner .profile-banner img');
+      const bimg = localStorage.getItem(K.BRIDE_IMG); const gimg = localStorage.getItem(K.GROOM_IMG);
+      if(imgs[0] && bimg) imgs[0].src = bimg; if(imgs[1] && gimg) imgs[1].src = gimg;
+      // Background
+      const bg = localStorage.getItem(K.BG);
+      if(bg){ const hero = $('.hero'); if(hero){ hero.style.backgroundImage=`url('${bg}')`; hero.style.backgroundSize='cover'; hero.style.backgroundPosition='center'; } }
+      // Gallery
+      (function(){ const holder = document.querySelector('#galeri .gallery'); if(!holder) return;
+        let list=[]; try{ list=JSON.parse(localStorage.getItem(K.GALLERY)||'[]'); }catch{ list=[]; }
+        if(Array.isArray(list) && list.length){
+          holder.innerHTML = list.map(x=>`<img src="${x.src||x.url}" alt="${(x.caption||'Prewedding')}" loading="lazy">`).join('');
+        }
+      })();
+    })();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

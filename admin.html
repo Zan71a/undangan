@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Admin — Upload Foto Tamu</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:ui-sans-serif,system-ui;max-width:720px;margin:40px auto;padding:0 16px;background:#0b1220;color:#eaf0ff}
+    .card{background:rgba(255,255,255,.06);border:1px solid rgba(156,188,255,.24);border-radius:14px;padding:18px}
+    label{display:block;margin:10px 0 6px}
+    input[type="text"],input[type="file"]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(156,188,255,.24);background:rgba(255,255,255,.06);color:#fff}
+    button{margin-top:12px;background:#3aa3ff;color:#fff;border:0;border-radius:10px;padding:10px 14px;cursor:pointer}
+    .out{margin-top:16px;padding:12px;background:rgba(255,255,255,.06);border-radius:10px}
+    .gold{background:#bfa15c}
+    code{word-break:break-all}
+    a{color:#9ad0ff}
+  </style>
+</head>
+<body>
+  <h1>Admin — Upload Foto Tamu</h1>
+  <div class="card">
+    <form action="upload.php" method="post" enctype="multipart/form-data" target="_blank">
+      <label>Nama Tamu (opsional, untuk contoh URL)</label>
+      <input type="text" name="guest_name" placeholder="Mis: Lily Rahma">
+
+      <label>Pilih Foto (JPG/PNG, &lt; 3MB)</label>
+      <input type="file" name="photo" accept=".jpg,.jpeg,.png" required>
+
+      <button type="submit" class="gold">Upload</button>
+    </form>
+    <p class="out">
+      Setelah upload, Anda akan dapat <b>path file</b> & contoh link undangan.<br>
+      Contoh pemakaian di undangan:<br>
+      <code>http://localhost/undangan/?to=Nama%20Tamu&photo=/undangan/uploads/NAMA_FILE.jpg</code>
+    </p>
+  </div>
+</body>
+</html>
