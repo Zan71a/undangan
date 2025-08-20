@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — Profil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#eaf0ff;--muted:#9aa4c0;--card:rgba(255,255,255,.06);--bd:rgba(156,188,255,.2)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui;background:#0b1220;color:var(--ink)}
+    .wrap{max-width:860px;margin:26px auto;padding:0 20px}
+    h1{font-size:30px;margin:10px 0 6px}
+    .grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+    @media(max-width:840px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px}
+    label{display:block;margin-top:10px;color:var(--muted)}
+    input[type="text"]{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(156,188,255,.24);color:#fff;border-radius:12px;padding:10px 12px}
+    input[type="file"]{width:100%;}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:#3aa3ff;color:#081224;text-decoration:none;font-weight:800;padding:12px 16px;border-radius:12px;border:0;cursor:pointer}
+    .ph{background:#0f1b33;border:1px dashed rgba(156,188,255,.3);border-radius:12px;padding:10px;text-align:center}
+    .ph img{width:100%;height:260px;object-fit:cover;border-radius:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Admin — Profil Mempelai</h1>
+    <div class="grid">
+      <div class="card">
+        <h3>Pengantin Wanita</h3>
+        <label>Nama <input id="brideName" type="text" placeholder="Nama pengantin wanita"></label>
+        <label>Orang Tua <input id="brideParents" type="text" placeholder="Bpk/Ibu …"></label>
+        <label>Foto <input id="brideImg" type="file" accept="image/*"></label>
+        <div class="ph"><img id="prevBride" alt="Preview"/></div>
+      </div>
+      <div class="card">
+        <h3>Pengantin Pria</h3>
+        <label>Nama <input id="groomName" type="text" placeholder="Nama pengantin pria"></label>
+        <label>Orang Tua <input id="groomParents" type="text" placeholder="Bpk/Ibu …"></label>
+        <label>Foto <input id="groomImg" type="file" accept="image/*"></label>
+        <div class="ph"><img id="prevGroom" alt="Preview"/></div>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <button id="save" class="btn">Simpan</button>
+    </div>
+  </div>
+  <script>
+    const K = {
+      BRIDE_IMG:'WED_BRIDE_IMG', GROOM_IMG:'WED_GROOM_IMG',
+      BRIDE_NAME:'WED_BRIDE_NAME', GROOM_NAME:'WED_GROOM_NAME',
+      BRIDE_PARENTS:'WED_BRIDE_PARENTS', GROOM_PARENTS:'WED_GROOM_PARENTS',
+    };
+    const $ = (id)=>document.getElementById(id);
+    function readFile(input, cb){ const f=input.files?.[0]; if(!f) return; const r=new FileReader(); r.onload=()=>cb(r.result); r.readAsDataURL(f); }
+    $('brideImg').addEventListener('change', ()=>readFile($('brideImg'), src=>$('prevBride').src=src));
+    $('groomImg').addEventListener('change', ()=>readFile($('groomImg'), src=>$('prevGroom').src=src));
+    // preload
+    $('prevBride').src = localStorage.getItem(K.BRIDE_IMG)||'';
+    $('prevGroom').src = localStorage.getItem(K.GROOM_IMG)||'';
+    $('brideName').value = localStorage.getItem(K.BRIDE_NAME)||'';
+    $('groomName').value = localStorage.getItem(K.GROOM_NAME)||'';
+    $('brideParents').value = localStorage.getItem(K.BRIDE_PARENTS)||'';
+    $('groomParents').value = localStorage.getItem(K.GROOM_PARENTS)||'';
+    $('save').onclick = ()=>{
+      if($('prevBride').src) localStorage.setItem(K.BRIDE_IMG, $('prevBride').src);
+      if($('prevGroom').src) localStorage.setItem(K.GROOM_IMG, $('prevGroom').src);
+      localStorage.setItem(K.BRIDE_NAME, $('brideName').value.trim());
+      localStorage.setItem(K.GROOM_NAME, $('groomName').value.trim());
+      localStorage.setItem(K.BRIDE_PARENTS, $('brideParents').value.trim());
+      localStorage.setItem(K.GROOM_PARENTS, $('groomParents').value.trim());
+      alert('Tersimpan. Refresh halaman utama.');
+    };
+  </script>
+</body>
+</html>

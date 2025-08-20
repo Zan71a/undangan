@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Admin (Tanpa Login)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#eaf0ff;--muted:#9aa4c0;--card:rgba(255,255,255,.06);--bd:rgba(156,188,255,.2)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui;background:#0b1220;color:var(--ink)}
+    .wrap{max-width:980px;margin:26px auto;padding:0 20px}
+    h1{font-size:34px;margin:10px 0 6px}
+    p{color:var(--muted)}
+    .grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px}
+    a.btn{display:inline-flex;align-items:center;gap:8px;background:#3aa3ff;color:#081224;text-decoration:none;font-weight:800;padding:12px 16px;border-radius:12px}
+    .danger{background:#ff6b6b;color:#fff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Dashboard Admin</h1>
+    <p>Semua data tersimpan di localStorage (tanpa login).</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Profil Mempelai</h3>
+        <p>Nama, orang tua, dan foto profil.</p>
+        <a class="btn" href="profile.html">Buka →</a>
+      </div>
+      <div class="card">
+        <h3>Galeri Prewedding</h3>
+        <p>Tambah/hapus foto galeri.</p>
+        <a class="btn" href="gallery.html">Buka →</a>
+      </div>
+      <div class="card">
+        <h3>Background</h3>
+        <p>Ganti gambar latar bagian HERO.</p>
+        <a class="btn" href="background.html">Buka →</a>
+      </div>
+      <div class="card">
+        <h3>Undangan Tamu</h3>
+        <p>Buat link personal (contoh: Lily) & default nama gate.</p>
+        <a class="btn" href="invites.html">Buka →</a>
+      </div>
+      <div class="card">
+        <h3>Reset Semua Data</h3>
+        <p>Hapus seluruh data dari localStorage.</p>
+        <a id="resetAll" class="btn danger" href="#">Reset</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('resetAll').addEventListener('click', (e)=>{
+      e.preventDefault();
+      if(!confirm('Yakin hapus semua data dari localStorage?')) return;
+      localStorage.clear();
+      alert('Semua data dihapus.');
+    });
+  </script>
+</body>
+</html>

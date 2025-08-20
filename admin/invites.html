@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — Undangan Tamu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#eaf0ff;--muted:#9aa4c0;--card:rgba(255,255,255,.06);--bd:rgba(156,188,255,.2)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui;background:#0b1220;color:var(--ink)}
+    .wrap{max-width:860px;margin:26px auto;padding:0 20px}
+    h1{font-size:30px;margin:10px 0 6px}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px}
+    .row{display:grid;gap:14px;grid-template-columns:2fr 1fr 1fr}
+    @media(max-width:840px){.row{grid-template-columns:1fr}}
+    input[type="text"]{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(156,188,255,.24);color:#fff;border-radius:12px;padding:10px 12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:#3aa3ff;color:#081224;text-decoration:none;font-weight:800;padding:12px 16px;border-radius:12px;border:0;cursor:pointer}
+    .muted{color:var(--muted)}
+    .out{background:#0f1b33;border:1px dashed rgba(156,188,255,.3);border-radius:12px;padding:12px;word-break:break-all}
+    .list{margin-top:16px}
+    .item{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px dashed rgba(156,188,255,.22)}
+    .item .name{font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Admin — Undangan Tamu</h1>
+    <p class="muted">Buat link undangan personal (contoh: Lily) dan set nama default di gate.</p>
+    <div class="card">
+      <div class="row">
+        <input id="guest" type="text" placeholder="Nama tamu, misal: Lily">
+        <button id="make" class="btn">Buat Link</button>
+        <button id="setDefault" class="btn" title="Dipakai saat link tanpa ?to=">Set Default</button>
+      </div>
+      <div class="out" id="link" style="margin-top:12px"></div>
+      <div class="list" id="list"></div>
+    </div>
+  </div>
+  <script>
+    const ORIGIN = (location.origin + location.pathname).replace(/admin\/[^/]*$/, '');
+    const LINKBOX = document.getElementById('link');
+    const LIST = document.getElementById('list');
+    const INPUT = document.getElementById('guest');
+    const KEY = 'WED_GUESTS';
+    const DEF = 'WED_GUEST_DEFAULT';
+
+    function load(){ try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]} }
+    function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+    function makeLink(name){
+      const base = ORIGIN.endsWith('/') ? ORIGIN : ORIGIN + '/';
+      const url = base + 'index.html?to=' + encodeURIComponent(name.trim());
+      LINKBOX.textContent = url;
+      navigator.clipboard?.writeText(url).catch(()=>{});
+    }
+
+    function render(){
+      const arr = load();
+      LIST.innerHTML = arr.map((n,i)=>\`
+        <div class="item">
+          <span class="name">\${n}</span>
+          <span>
+            <button class="btn" data-copy="\${i}">Copy Link</button>
+            <button class="btn" data-def="\${i}">Jadikan Default</button>
+            <button class="btn" data-del="\${i}" style="background:#ff6b6b;color:#fff">Hapus</button>
+          </span>
+        </div>\`).join('');
+    }
+
+    document.getElementById('make').onclick = ()=>{
+      const name = INPUT.value.trim(); if(!name) return alert('Isi nama dulu');
+      const arr = load(); arr.unshift(name); save(arr);
+      makeLink(name); render();
+    };
+
+    document.getElementById('setDefault').onclick = ()=>{
+      const name = INPUT.value.trim(); if(!name) return alert('Isi nama dulu');
+      localStorage.setItem(DEF, name);
+      alert('Default guest diset: ' + name);
+    };
+
+    LIST.addEventListener('click', (e)=>{
+      const i = e.target.dataset.copy ?? e.target.dataset.del ?? e.target.dataset.def;
+      if(i==null) return;
+      const arr = load(); const name = arr[+i];
+      if(e.target.dataset.copy!=null){ makeLink(name); }
+      if(e.target.dataset.def!=null){ localStorage.setItem(DEF, name); alert('Default guest diset: ' + name); }
+      if(e.target.dataset.del!=null){ arr.splice(+i,1); save(arr); render(); }
+    });
+
+    render();
+  </script>
+</body>
+</html>
